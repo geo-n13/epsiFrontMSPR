@@ -1,3 +1,4 @@
+import CheckBox from "expo-checkbox";
 import React from "react";
 import { useState } from "react";
 import {
@@ -34,6 +35,11 @@ export default function Login() {
     setPassword("");
   }
 
+  function onCheckboxChange() {
+    console.log("Remember me !");
+    setSelection(!isSelected);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Hi again !</Text>
@@ -67,22 +73,15 @@ export default function Login() {
         </TouchableHighlight>
       </View>
       <View style={styles.checkboxContainer}>
-        {/* <CheckBox
+        <CheckBox
           value={isSelected}
-          onValueChange={setSelection}  
-          style={styles.checkbox}
-        /> */}
-
-        {/* <CheckBox
-          isChecked={isSelected}
-          onClick={() => {
-            console.log(!isSelected);
-            setSelection(!isSelected);
+          onValueChange={() => {
+            onCheckboxChange();
           }}
-        /> */}
+        />
         <View
           style={{
-            padding: 10,
+            padding: 5,
             width: "100%",
             display: "flex",
             flexDirection: "row",
@@ -167,11 +166,14 @@ const styles = StyleSheet.create({
     borderColor: "#749857",
   },
   checkboxContainer: {
+    margin: 10,
+
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     flexDirection: "row",
   },
-  checkbox: {
-    alignSelf: "center",
-  },
+
   title: {
     margin: 10,
     fontSize: 35,

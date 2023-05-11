@@ -1,8 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton';
 
 export default function Welcome() {
+    const navigation = useNavigation();
+
+    const handleSignInButtonPress = () => {
+        navigation.navigate('Home');
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.pictureContainer}>
@@ -20,7 +27,7 @@ export default function Welcome() {
             
             <View style={styles.buttonContainer}>
                 <CustomButton titleButton={'Register'} onPress={null} reverseColor={true}/>
-                <CustomButton titleButton={'Sign In'} onPress={null} reverseColor={false}/>
+                <CustomButton titleButton={'Sign In'} onPress={handleSignInButtonPress} reverseColor={false}/>
             </View>
             <StatusBar style="auto" />
         </View>

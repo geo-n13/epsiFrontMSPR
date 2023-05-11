@@ -7,7 +7,7 @@ export default function Welcome() {
     const navigation = useNavigation();
 
     const handleSignInButtonPress = () => {
-        navigation.navigate('Home');
+        navigation.navigate('Accueil');
     };
 
     return (

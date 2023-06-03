@@ -1,9 +1,7 @@
 import CheckBox from "expo-checkbox";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
-  Alert,
-  Button,
   Pressable,
   StyleSheet,
   Text,
@@ -11,10 +9,12 @@ import {
   TouchableHighlight,
   View,
 } from "react-native";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 export default function Register() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [adress, setAdress] = React.useState("");
   const [fullName, setFullName] = React.useState("");
   const [showPassword, setShowPassword] = useState(true);
   const [isSelected, setSelection] = useState(false);
@@ -28,7 +28,6 @@ export default function Register() {
     <View style={styles.container}>
       <Text style={styles.title}>Hello, let's create your account </Text>
       <Text style={styles.subTitle}>Welcome, write down your info please!</Text>
-
       <View style={styles.input}>
         <TextInput
           onChangeText={setEmail}
@@ -37,6 +36,35 @@ export default function Register() {
           keyboardType="email-address"
         />
       </View>
+
+      <View style={styles.container14}>
+        <GooglePlacesAutocomplete
+          styles={{
+            height: "10px",
+            borderWidth: 1,
+            borderRadius: 10,
+            borderColor: "#749857",
+            backgroundColor: "#08d893",
+          }}
+          textInputProps={styles.inputAdress}
+          fetchDetails
+          currentLocation
+          currentLocationLabel="Ma posicion"
+          debounce={400}
+          placeholder="Adresse"
+          query={{
+            key: "AIzaSyBAScqrcdwCpji6Z4-rJuAWLwxF1tEJnxQ",
+            language: "fr",
+          }}
+          onPress={(data, details) => setAdress(data.description)}
+          onFail={(error) => console.error(error)}
+          requestUrl={{
+            url: "https://maps.googleapis.com/maps/api",
+            useOnPlatform: "web",
+          }}
+        />
+      </View>
+
       <View style={styles.input}>
         <TextInput
           onChangeText={setFullName}
@@ -72,11 +100,13 @@ export default function Register() {
         />
         <View
           style={{
-            padding: 5,
+            paddingLeft: 10,
             width: "100%",
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            alignContent: "center",
+            alignItems: "center",
           }}>
           <Text>Yes, I want to receive offers and discounts</Text>
         </View>
@@ -106,12 +136,17 @@ export default function Register() {
 }
 
 const styles = StyleSheet.create({
+  container14: {
+    height: "auto",
+    padding: 10,
+    backgroundColor: "#F4F7F6",
+  },
   container: {
-    flex: 1,
+    height: "100%",
     backgroundColor: "#F4F7F6",
     padding: 10,
-    // alignItems: "center",
-    // justifyContent: "center",
+    borderColor: "#749857",
+    overflow: "scroll",
   },
   linkStyle: {
     color: "#749857",
@@ -122,6 +157,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 2,
+    marginTop: 12,
   },
   signInButtonText: {
     height: 30,
@@ -145,8 +181,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "#749857",
   },
+  inputAdress: {
+    flexDirection: "row",
+    display: "flex",
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#749857",
+  },
   checkboxContainer: {
     flexDirection: "row",
+    margin: 12,
   },
   checkbox: {
     alignSelf: "center",

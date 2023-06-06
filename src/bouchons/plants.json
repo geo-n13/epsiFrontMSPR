@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Rose",
+        "description": "La rose est une fleur très populaire dans les jardins.",
+        "plantType": "Fleur",
+        "careTips": "Les roses ont besoin d'un ensoleillement direct pendant au moins 6 heures par jour. Arrosez-les régulièrement et veillez à garder le sol bien drainé.",
+        "image": "Rose.jpeg"
+    },
+    {
+        "id": 2,
+        "name": "Lys",
+        "description": "Le lys est une plante à fleurs appréciée pour sa beauté et son parfum.",
+        "plantType": "Fleur",
+        "careTips": "Les lys préfèrent un sol bien drainé et une exposition au soleil ou à la mi-ombre. Arrosez-les régulièrement et ajoutez de l'engrais pendant la période de croissance.",
+        "image": "Lys.jpeg"
+    },
+    {
+        "id": 3,
+        "name": "Palmier",
+        "description": "Le palmier est une plante tropicale qui peut atteindre une grande taille.",
+        "plantType": "Arbre",
+        "careTips": "Les palmiers nécessitent un ensoleillement direct et un sol bien drainé. Arrosez-les régulièrement et pulvérisez les feuilles avec de l'eau pour maintenir une humidité adéquate.",
+        "image": "Palmier.jpeg"
+    },
+    {
+        "id": 4,
+        "name": "Tulipe",
+        "description": "La tulipe est une fleur printanière qui existe dans différentes couleurs.",
+        "plantType": "Fleur",
+        "careTips": "Les tulipes préfèrent un sol bien drainé et une exposition en plein soleil. Arrosez-les modérément et laissez le sol sécher entre les arrosages.",
+        "image": "Tulipe.jpeg"
+    }
+]

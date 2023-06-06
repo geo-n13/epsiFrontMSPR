@@ -1,13 +1,22 @@
+import React from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../components/CustomButton';
 
 export default function Welcome() {
     const navigation = useNavigation();
 
+    const handleHomeButtonPress = () => {
+        navigation.navigate('Home');
+    };
+
+    const handleRegisterButtonPress = () => {
+        navigation.navigate('Register');
+    };
+
     const handleSignInButtonPress = () => {
-        navigation.navigate('Accueil');
+        navigation.navigate('Sign In');
     };
 
     return (
@@ -24,9 +33,13 @@ export default function Welcome() {
                 <Text style={styles.titleText}>The best app for your guarding</Text>
                 <Text style={styles.descriptionText}>Keep your mind at ease, take your vacation and let experts take care of your plants !</Text>
             </View>
+
+            <TouchableOpacity onPress={handleHomeButtonPress}>
+                <Text>Accéder au "Home"</Text>
+            </TouchableOpacity>
             
             <View style={styles.buttonContainer}>
-                <CustomButton titleButton={'Register'} onPress={null} reverseColor={true}/>
+                <CustomButton titleButton={'Register'} onPress={handleRegisterButtonPress} reverseColor={true}/>
                 <CustomButton titleButton={'Sign In'} onPress={handleSignInButtonPress} reverseColor={false}/>
             </View>
             <StatusBar style="auto" />
